@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Like from "./common/like";
-// import ListGroup from "./common/listGroup";
+import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
@@ -55,6 +55,9 @@ class Movies extends Component {
             items={this.state.genres}
             onItemSelect={this.handleGenreSelect}
           /> */}
+          <ul className="list-group">
+            <ListGroup genres={this.state.genres} />
+          </ul>
         </div>
         <div className="col">
           <h4 className="p-3">Showing {count} movies in the database...</h4>
