@@ -24,16 +24,12 @@ class TableHeader extends Component {
   };
 
   render() {
-    const style = {
-      cursor: "pointer",
-    };
-
     return (
       <thead>
         <tr>
           {this.props.columns.map((column) => (
             <th
-              style={style}
+              className="clickable"
               key={column.path || column.key}
               onClick={() => this.raiseSort(column.path)}
             >

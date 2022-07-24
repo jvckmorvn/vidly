@@ -1,19 +1,11 @@
 import React from "react";
 import PropTypes from "../../../node_modules/prop-types";
+import _ from "../../../node_modules/lodash";
 
-const Pagination = (props) => {
-  const { itemsCount, pageSize, currentPage, onPageChange } = props;
+const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   const pagesCount = Math.ceil(itemsCount / pageSize);
-  const style = {
-    cursor: "pointer",
-  };
-
   if (pagesCount === 1) return null;
-
-  let pages = [];
-  for (let i = 0; i < pagesCount; i++) {
-    pages.push(i + 1);
-  }
+  const pages = _.range(1, pagesCount + 1);
 
   return (
     <nav>
@@ -24,8 +16,7 @@ const Pagination = (props) => {
             className={page === currentPage ? "page-item active" : "page-item"}
           >
             <a
-              className="page-link"
-              style={style}
+              className="page-link clickable"
               onClick={() => onPageChange(page)}
             >
               {page}
