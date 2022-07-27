@@ -2,9 +2,9 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
 
-class LoginForm extends Form {
+class SignUpForm extends Form {
   state = {
-    data: { username: "", password: "" },
+    data: { username: "", email: "", password: "" },
     errors: {},
   };
 
@@ -12,28 +12,34 @@ class LoginForm extends Form {
     username: Joi.string()
       .required()
       .label("Username"),
+    email: Joi.string()
+      .email()
+      .required()
+      .label("Email"),
     password: Joi.string()
       .required()
+      .min(8)
       .label("Password"),
   };
 
   doSubmit = () => {
     // do this if form data is valid
-    console.log("Login submitted");
+    console.log("Sign up submitted");
   };
 
   render() {
     return (
       <div>
-        <h1>Login</h1>
+        <h1>Sign up</h1>
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("username", "Username")}
+          {this.renderInput("email", "Email", "email")}
           {this.renderInput("password", "Password", "password")}
         </form>
-        {this.renderButton("Login")}
+        {this.renderButton("Sign up")}
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default SignUpForm;
