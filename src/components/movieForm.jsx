@@ -1,12 +1,12 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "./common/form";
-import { getGenres } from "../services/fakeGenreService";
 import { getMovie, saveMovie } from "../services/fakeMovieService";
+import { getGenres } from "../services/fakeGenreService";
 
 class MovieForm extends Form {
   state = {
-    data: { title: "", genreId: "", numberInStock: "", rating: "" },
+    data: { title: "", genreId: "", numberInStock: "", dailyRentalRate: "" },
     genres: [],
     errors: {},
   };
@@ -16,15 +16,15 @@ class MovieForm extends Form {
     title: Joi.string()
       .required()
       .label("Title"),
-    genre: Joi.string()
+    genreId: Joi.string()
       .required()
       .label("Genre"),
-    stock: Joi.number()
+    numberInStock: Joi.number()
       .required()
       .label("Stock")
       .min(0)
       .max(100),
-    rating: Joi.number()
+    dailyRentalRate: Joi.number()
       .required()
       .label("Rating")
       .min(0)
@@ -37,6 +37,7 @@ class MovieForm extends Form {
 
     const movieId = this.props.match.params.id;
     if (movieId === "new") return;
+
     const movie = getMovie(movieId);
     if (!movie) return this.props.history.replace("/not-found");
 
@@ -59,6 +60,7 @@ class MovieForm extends Form {
 
   doSubmit = () => {
     saveMovie(this.state.data);
+
     this.props.history.push("/movies");
   };
 
