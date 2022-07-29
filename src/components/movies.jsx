@@ -9,6 +9,9 @@ import { paginate } from "../utils/paginate";
 import { Link } from "react-router-dom";
 import _ from "../../node_modules/lodash";
 
+// Add below flag to npm start in package.json when running on work computer
+// --openssl-legacy-provider
+
 class Movies extends Component {
   state = {
     movies: [],
@@ -47,7 +50,6 @@ class Movies extends Component {
   };
 
   handleSearch = (searchQuery) => {
-    // movies.filter((m) => m.title.includes(searchQuery));
     this.setState({ searchQuery, selectedGenre: null, currentPage: 1 });
   };
 
@@ -62,6 +64,7 @@ class Movies extends Component {
       sortColumn,
       selectedGenre,
       movies: allMovies,
+      searchQuery,
     } = this.state;
 
     let filtered = allMovies;
