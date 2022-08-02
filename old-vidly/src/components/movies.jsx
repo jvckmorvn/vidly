@@ -9,9 +9,6 @@ import { paginate } from "../utils/paginate";
 import { Link } from "react-router-dom";
 import _ from "../../node_modules/lodash";
 
-// Add below flag to npm start in package.json when running on work computer
-// --openssl-legacy-provider
-
 class Movies extends Component {
   state = {
     movies: [],
