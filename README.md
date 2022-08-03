@@ -10,5 +10,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Run `npm start` to launch the app in development mode.
 - Finally, navigate to 'localhost:3000' in your web browser to start using the app!
 
-The page will reload when you save any changes in the text editor.\
+The page will reload when you save any changes in your text editor.\
 You may also view lint errors in the console.
